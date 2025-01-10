@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.cpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/11/26 14:05:32 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:50:06 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "animal.hpp"
+#include "Animal.hpp"
 
 /* Constructors (Default, set type, copy) and destructor */
 
@@ -28,7 +28,7 @@ Animal::Animal(const std::string typeP) : type(typeP)
 Animal::Animal(const Animal& orig)
 {
 	std::cout << "Generic Animal instance created as a copy of another." << std::endl;
-	this->type = orig.type;
+	this->type = orig.getType();
 }
 
 Animal::~Animal()
@@ -42,9 +42,11 @@ Animal& Animal::operator=(const Animal& orig)
 {
 	std::cout << "Asignment operator for Generic Animal called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+		this->type = orig.getType();
 	return (*this);
 }
+
+/* Utility member functions*/
 
 std::string const & Animal::getType() const
 {
@@ -59,5 +61,5 @@ void Animal::setType(std::string typeP)
 
 void Animal::makeSound() const
 {
-	std::cout << "The" << this->type << "does his undescriptible sound." << std::endl;
+	std::cout << "The " << this->type << " does his undescriptible sound." << std::endl;
 }

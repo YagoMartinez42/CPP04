@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:27:55 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/18 12:12:11 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:12:59 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat : public Animal
 		Cat(const Cat& orig);
 		~Cat();
 		Cat& operator=(const Cat& orig);
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif

@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/06 15:19:36 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:48:07 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cat.hpp"
+#include "Cat.hpp"
 
 /* Constructors (Default and copy) and destructor */
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	this->type = "Cat";
+	this->_brain = new Brain();
 	std::cout << "Cat instance created." << std::endl;
 }
 
-Cat::Cat(const Cat& orig) : Animal(orig)
+Cat::Cat(const Cat& orig) : AAnimal(orig)
 {
+	this->type = orig.getType();
+	this->_brain = new Brain(orig.getFullBrain());
 	std::cout << "Cat instance created as a copy of another." << std::endl;
-	this->type = orig.type;
 }
 
 Cat::~Cat()
 {
+	delete this->_brain;
 	std::cout << "Cat instance destroyed." << std::endl;
 }
 
@@ -37,7 +40,11 @@ Cat& Cat::operator=(const Cat& orig)
 {
 	std::cout << "Asignment operator for Cat called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+	{
+		this->type = orig.getType();
+		delete this->_brain;
+		this->_brain = new Brain(orig.getFullBrain());
+	}
 	return (*this);
 }
 
@@ -45,5 +52,10 @@ Cat& Cat::operator=(const Cat& orig)
 
 void Cat::makeSound() const
 {
-	std::cout << "The" << this->type << "meows." << std::endl;
+	std::cout << "The " << this->type << " meows." << std::endl;
+}
+
+Brain & Cat::getFullBrain() const
+{
+	return (*(this->_brain));
 }

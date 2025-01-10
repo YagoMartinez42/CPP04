@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:27:55 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/06 15:10:30 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 12:38:32 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
-# include "animal.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Dog : public AAnimal
 {
 	public:
-		Cat();
-		Cat(const Cat& orig);
-		~Cat();
-		Cat& operator=(const Cat& orig);
-		void Cat::makeSound() const;
+		Dog();
+		Dog(const Dog& orig);
+		~Dog();
+		Dog& operator=(const Dog& orig);
+		void makeSound() const;
+		Brain & getFullBrain() const;
+	private:
+		Brain* _brain;
 };
 
 #endif

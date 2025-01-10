@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrong_cat.hpp                                      :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:27:55 by samartin          #+#    #+#             */
-/*   Updated: 2024/11/29 14:27:36 by samartin         ###   ########.fr       */
+/*   Created: 2024/12/05 14:58:50 by samartin          #+#    #+#             */
+/*   Updated: 2024/12/19 12:17:13 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONG_CAT_HPP
-# define WRONG_CAT_HPP
-# include "wrong_animal.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+# ifndef MAXIDEAS
+#  define MAXIDEAS 100
+# endif
+# include <iostream>
 
-class WrongCat : public WrongAnimal
+class Brain
 {
 	public:
-		WrongCat();
-		WrongCat(std::string typeP);
-		~WrongCat();
+		Brain();
+		Brain(const Brain& orig);
+		~Brain();
+		Brain& operator=(const Brain& orig);
+		void addIdea(std::string ideaP);
+		std::string getIdea(int idx) const;
+		void removeIdea(int idx);
+	private:
+		std::string ideas[MAXIDEAS];
 };
 
 #endif

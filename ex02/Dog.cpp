@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/06 15:17:10 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:48:20 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dog.hpp"
+#include "Dog.hpp"
 
 /* Constructors (Default and copy) and destructor */
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	this->type = "Dog";
+	this->_brain = new Brain();
 	std::cout << "Dog instance created." << std::endl;
 }
 
-Dog::Dog(const Dog& orig) : Animal(orig)
+Dog::Dog(const Dog& orig) : AAnimal(orig)
 {
+	this->type = orig.getType();
+	this->_brain = new Brain(orig.getFullBrain());
 	std::cout << "Dog instance created as a copy of another." << std::endl;
-	this->type = orig.type;
 }
 
 Dog::~Dog()
 {
+	delete this->_brain;
 	std::cout << "Dog instance destroyed." << std::endl;
 }
 
@@ -37,7 +40,11 @@ Dog& Dog::operator=(const Dog& orig)
 {
 	std::cout << "Asignment operator for Dog called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+	{
+		this->type = orig.getType();
+		delete this->_brain;
+		this->_brain = new Brain(orig.getFullBrain());
+	}
 	return (*this);
 }
 
@@ -45,5 +52,10 @@ Dog& Dog::operator=(const Dog& orig)
 
 void Dog::makeSound() const
 {
-	std::cout << "The" << this->type << "barks." << std::endl;
+	std::cout << "The " << this->type << " barks." << std::endl;
+}
+
+Brain & Dog::getFullBrain() const
+{
+	return (*(this->_brain));
 }

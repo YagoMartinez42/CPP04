@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/16 16:21:10 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:50:45 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Cat::Cat() : Animal()
 Cat::Cat(const Cat& orig) : Animal(orig)
 {
 	std::cout << "Cat instance created as a copy of another." << std::endl;
-	this->type = orig.type;
+	this->type = orig.getType();
 }
 
 Cat::~Cat()
@@ -37,7 +37,7 @@ Cat& Cat::operator=(const Cat& orig)
 {
 	std::cout << "Asignment operator for Cat called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+		this->type = orig.getType();
 	return (*this);
 }
 

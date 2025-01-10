@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrong_cat.cpp                                      :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/11/28 17:30:23 by samartin         ###   ########.fr       */
+/*   Created: 2024/11/24 16:27:55 by samartin          #+#    #+#             */
+/*   Updated: 2024/12/23 15:09:52 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wrong_cat.hpp"
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
+# include <iostream>
 
-WrongCat::WrongCat() : WrongAnimal()
+class AAnimal
 {
-	this->type = "";
-	std::cout << "Wrong Cat instance created with empty type." << std::endl;
-}
+	public:
+		AAnimal();
+		AAnimal(const AAnimal& orig);
+		virtual ~AAnimal();
+		AAnimal& operator=(const AAnimal& orig);
+		std::string const & getType() const;
+		void setType(std::string typeP);
+		virtual void makeSound() const = 0;
+	protected:
+		std::string type;
+};
 
-WrongCat::WrongCat(const std::string typeP) : WrongAnimal(typeP)
-{
-	std::cout << "Wrong Cat instance created with " << this->type << " type." << std::endl;
-}
-
-WrongCat::~WrongCat()
-{
-	std::cout << "Wrong Cat instance destroyed." << std::endl;
-}
-
+#endif

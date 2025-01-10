@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/16 15:21:18 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:51:21 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Animal::Animal(const std::string typeP) : type(typeP)
 Animal::Animal(const Animal& orig)
 {
 	std::cout << "Generic Animal instance created as a copy of another." << std::endl;
-	this->type = orig.type;
+	this->type = orig.getType();
 }
 
 Animal::~Animal()
@@ -42,7 +42,7 @@ Animal& Animal::operator=(const Animal& orig)
 {
 	std::cout << "Asignment operator for Generic Animal called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+		this->type = orig.getType();
 	return (*this);
 }
 

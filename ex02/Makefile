@@ -2,7 +2,7 @@ NAME		:= tester
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 RM			:= rm -rf
-SRC			:= main.cpp Cat.cpp Dog.cpp Animal.cpp Brain.cpp
+SRC			:= main.cpp Cat.cpp Dog.cpp AAnimal.cpp Brain.cpp
 OBJ			:= ${SRC:.cpp=.o}
 
 all: ${NAME}

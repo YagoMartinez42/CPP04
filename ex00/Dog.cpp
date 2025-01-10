@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/16 16:21:16 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:50:58 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog& orig) : Animal(orig)
 {
 	std::cout << "Dog instance created as a copy of another." << std::endl;
-	this->type = orig.type;
+	this->type = orig.getType();
 }
 
 Dog::~Dog()
@@ -37,7 +37,7 @@ Dog& Dog::operator=(const Dog& orig)
 {
 	std::cout << "Asignment operator for Dog called" << std::endl;
 	if (this != &orig)
-		this->type = orig.type;
+		this->type = orig.getType();
 	return (*this);
 }
 

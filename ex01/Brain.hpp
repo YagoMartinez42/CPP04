@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:27:55 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/06 15:20:10 by samartin         ###   ########.fr       */
+/*   Created: 2024/12/05 14:58:50 by samartin          #+#    #+#             */
+/*   Updated: 2024/12/19 12:17:13 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-# include "animal.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+# ifndef MAXIDEAS
+#  define MAXIDEAS 100
+# endif
+# include <iostream>
 
-class Dog : public Animal
+class Brain
 {
 	public:
-		Dog();
-		Dog(const Dog& orig);
-		~Dog();
-		Dog& Dog::operator=(const Dog& orig);
-		void Dog::makeSound() const;
+		Brain();
+		Brain(const Brain& orig);
+		~Brain();
+		Brain& operator=(const Brain& orig);
+		void addIdea(std::string ideaP);
+		std::string getIdea(int idx) const;
+		void removeIdea(int idx);
+	private:
+		std::string ideas[MAXIDEAS];
 };
 
 #endif
