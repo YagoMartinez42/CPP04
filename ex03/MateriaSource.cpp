@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:49:36 by samartin          #+#    #+#             */
-/*   Updated: 2025/01/09 11:47:53 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:43:04 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 MateriaSource::MateriaSource()
 {
+	for (int i = 0; i < SMAXMAT; i++)
+		this->_library[i] = NULL;
 	std::cout << "Materia Source instance created." << std::endl;
 }
 
@@ -49,7 +51,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& orig)
 	return (*this);
 }
 
-/* Utility member functions*/
+/* Utility member functions */
 
 void MateriaSource::learnMateria(AMateria* materia)
 {
@@ -59,7 +61,17 @@ void MateriaSource::learnMateria(AMateria* materia)
 	{
 		if (!(this->_library[i]))
 		{
+			//Safety check to avoid true duplicates (Double deletion risk in ~MateriaSource() destructor)
+			for (int j = 0; j < SMAXMAT; j++)
+			{
+				if (materia == _library[j])
+				{
+					std::cout << "That Materia instance is already in this source." << std::endl;
+					return;
+				}
+			}
 			this->_library[i] = materia;
+			std::cout << "Materia learnt into slot " << i << "." << std::endl;
 			break;
 		}
 	}
@@ -70,12 +82,17 @@ void MateriaSource::learnMateria(AMateria* materia)
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	AMateria* newMateria;
+	int i;
 
-	if (type == "cure")
-		newMateria = new Cure();
-	else if(type == "ice")
-		newMateria = new Ice();
-	else
+	for (i = 0; i < SMAXMAT; i++)
+	{
+		if (this->_library[i] && type == this->_library[i]->getType())
+		{
+			newMateria = this->_library[i]->clone();
+			break;
+		}
+	}
+	if (i == SMAXMAT)
 	{
 		std::cout << "Unknown Materia type." << std::endl;
 		newMateria = NULL;
@@ -87,7 +104,7 @@ void MateriaSource::listKnownMaterias()
 {
 	for (int i = 0; i < SMAXMAT; i++)
 	{
-		if (!(this->_library[i]))
+		if (this->_library[i])
 			std::cout << "- " << this->_library[i]->getType() << std::endl;
 	}
 }

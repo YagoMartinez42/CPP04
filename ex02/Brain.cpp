@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:58:50 by samartin          #+#    #+#             */
-/*   Updated: 2024/12/19 13:24:04 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:18:00 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Brain& Brain::operator=(const Brain& orig)
 {
 	int i = 0;
 
-	std::cout << "Asignment operator for Brain called" << std::endl;
+	std::cout << "Asignment operator for Brain called." << std::endl;
 	if (this != &orig)
 		{
 			while (i < MAXIDEAS)
@@ -54,7 +54,7 @@ Brain& Brain::operator=(const Brain& orig)
 	return (*this);
 }
 
-/* Utility member functions*/
+/* Utility member functions */
 
 void Brain::addIdea(std::string ideaP)
 {
@@ -65,7 +65,7 @@ void Brain::addIdea(std::string ideaP)
 	if (i < MAXIDEAS)
 		ideas[i] = ideaP;
 	else
-		std::cout << "This animal can't have more new ideas until forgets something" << std::endl;
+		std::cout << "This animal can't have more new ideas until forgets something." << std::endl;
 }
 
 std::string Brain::getIdea(int idx) const

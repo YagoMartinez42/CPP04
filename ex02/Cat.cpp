@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 16:29:40 by samartin          #+#    #+#             */
-/*   Updated: 2025/01/04 15:48:07 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:18:02 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Cat::~Cat()
 
 Cat& Cat::operator=(const Cat& orig)
 {
-	std::cout << "Asignment operator for Cat called" << std::endl;
+	std::cout << "Asignment operator for Cat called." << std::endl;
 	if (this != &orig)
 	{
 		this->type = orig.getType();
@@ -48,7 +48,7 @@ Cat& Cat::operator=(const Cat& orig)
 	return (*this);
 }
 
-/* Utility member functions*/
+/* Utility member functions */
 
 void Cat::makeSound() const
 {

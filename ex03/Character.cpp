@@ -6,24 +6,27 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:33:19 by samartin          #+#    #+#             */
-/*   Updated: 2025/01/10 13:38:14 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:50:27 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "AMateria.hpp"
+#include <cstring>
 
 /* Constructors (Default, set type, copy) and destructor */
 
 Character::Character()
 {
 	this->_name = "";
+	std::memset(this->_inventory, 0, CMAXMAT * sizeof(AMateria*));
 	std::cout << "Character instance created with no name." << std::endl;
 }
 
 Character::Character(std::string const & name)
 {
 	this->_name = name;
+	std::memset(this->_inventory, 0, CMAXMAT * sizeof(AMateria*));
 	std::cout << "Character " << name << " instance created." << std::endl;
 }
 
@@ -71,11 +74,14 @@ void Character::equip(AMateria* m)
 {
 	int i;
 
+	if (!m)
+		return;
 	for (i = 0; i < CMAXMAT; i++)
 	{
 		if (!(this->_inventory[i]))
 		{
 			this->_inventory[i] = m;
+			std::cout << this->_name << " equiped a " << m->getType() << " Materia in inventory slot " << i << "." << std::endl;
 			break;
 		}
 	}
@@ -86,7 +92,10 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
 	if (this->_inventory[idx])
+	{
+		std::cout << this->_name << " unequiped a " << this->_inventory[idx]->getType() << " Materia from inventory slot " << idx << "." << std::endl;
 		this->_inventory[idx] = NULL;
+	}
 	else
 		std::cout << this->_name << "'s inventory has no materia in that slot." << std::endl;
 }

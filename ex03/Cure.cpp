@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:05:02 by samartin          #+#    #+#             */
-/*   Updated: 2025/01/08 16:09:03 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:30:47 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 
 Cure::Cure()
 {
-	this->_type = "Cure";
+	this->_type = "cure";
 	std::cout << "Cure Materia instance created." << std::endl;
 }
 
 Cure::Cure(const Cure& orig)
 {
-	this->_type = orig.getType();
+	/* If Cure Class is expanded, there should be something to fill in a copy.
+	 At the moment, all Cure Materias are completely equal. */
+	(void)orig;
+	this->_type = "cure";
 	std::cout << "Cure Materia instance created as a copy of another." << std::endl;
 }
 

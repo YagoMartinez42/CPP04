@@ -6,7 +6,7 @@
 /*   By: samartin <samartin@student.42madrid.es>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:38:49 by samartin          #+#    #+#             */
-/*   Updated: 2025/01/08 16:09:15 by samartin         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:30:44 by samartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 
 Ice::Ice()
 {
-	this->_type = "Ice";
+	this->_type = "ice";
 	std::cout << "Ice Materia instance created." << std::endl;
 }
 
 Ice::Ice(const Ice& orig)
 {
-	this->_type = orig.getType();
+	/* If Ice Class is expanded, there should be something to fill in a copy.
+	 At the moment, all Ice Materias are completely equal. */
+	 (void)orig;
+	this->_type = "ice";
 	std::cout << "Ice Materia instance created as a copy of another." << std::endl;
 }
 
